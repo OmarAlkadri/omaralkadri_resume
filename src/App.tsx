@@ -1,11 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './App.css'
 import ReactTypingEffect from 'react-typing-effect';
-
+import trtWorldIcon from './assets/trtWorldIcon.jpeg';
+import hitatekIcon from './assets/hitatekIcon.png';
+import sakaryaIcon from './assets/sakaryaIcon.png';
+import myImage from './assets/my.jpg';
 
 type ElementData = {
   content: any;
-  startAnimationClasses: string[]; // كلاس الرسوم المتحركة للدخول والخروج
+  startAnimationClasses: string[];
 };
 
 function App() {
@@ -44,13 +47,7 @@ function App() {
     }
   ];
   const [elements] = useState<ElementData[]>(allElements);
-
-
   const [activeIndex, setActiveIndex] = React.useState(0);
-
-
-
-
   const skillsData = [
     { skillName: 'C++', skillValue: 95 },
     { skillName: 'C', skillValue: 80 },
@@ -113,6 +110,21 @@ function App() {
     });
   }, []);
 
+  const [visitorCount, setVisitorCount] = useState<number>(0);
+
+  useEffect(() => {
+    const fetchVisitorCount = async () => {
+      try {
+        const response = await fetch('https://raw.githubusercontent.com/OmarAlkadri/omaralkadri_resume/main/visitors.json');
+        const data = await response.json();
+        setVisitorCount(data.count ?? 0);
+      } catch (error) {
+        console.error('Error fetching visitor count:', error);
+      }
+    };
+
+    fetchVisitorCount();
+  }, []);
   return (
     <html className='bg-white dark:bg-black'>
       <nav className="block w-full px-4 py-2 mx-auto bg-white bg-opacity-60 sticky top-0 shadow lg:px-8 lg:py-3 backdrop-blur-lg backdrop-saturate-150 z-[9999]">
@@ -121,6 +133,10 @@ function App() {
             className="mr-4 block cursor-pointer py-1.5 text-base text-slate-800 font-semibold">
             Omer Alkadri
           </a>
+          <div>
+            Number of visitors to my profile:
+            {visitorCount}
+          </div>
           <div className="hidden lg:block">
             <ul className="flex flex-col gap-2 mt-2 mb-4 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
               <li className="flex items-center p-1 text-sm gap-x-2 text-slate-600">
@@ -261,7 +277,7 @@ function App() {
                   <div
                     className="sm:w-[564px] w-full sm:h-[646px] h-full sm:bg-gray-100 rounded-3xl sm:border border-gray-200 relative">
                     <img className="sm:mt-5 sm:ml-5 w-full h-full rounded-3xl object-cover"
-                      src="./src/assets/my.jpg" alt="about Us image" />
+                      src={myImage} alt="about Us image" />
                   </div>
                 </div>
               </div>
@@ -318,7 +334,7 @@ function App() {
                       <ol className="relative top-4 border-s border-gray-200 dark:border-gray-700">
                         <li className="mb-10 ms-6">
                           <span className="absolute -start-5 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                            <img className="w-11 h-11 object-contain rounded-full" src="./src/assets/sakaryaIcon.png" alt="Rounded avatar" />
+                            <img className="w-11 h-11 object-contain rounded-full" src={sakaryaIcon} alt="" />
                           </span>
                           <div className="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:bg-gray-700 dark:border-gray-600">
                             <time className="mb-1 text-xs font-normal text-gray-400 sm:order-last sm:mb-0">2018-2022</time>
@@ -382,7 +398,7 @@ function App() {
                       <ol className="relative top-4 border-s border-gray-200 dark:border-gray-700">
                         <li className="-5 ms-6">
                           <span className="absolute -start-5 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                            <img className="w-11 h-11 pr-1 object-contain rounded-full" src="./src/assets/trtWorldIcon.jpeg" alt="Rounded avatar" />
+                            <img className="w-11 h-11 pr-1 object-contain rounded-full" src={trtWorldIcon} alt="" />
                           </span>
                           <div className="p-4 bg-white border  border-gray-200 rounded-lg shadow-sm dark:bg-gray-700 dark:border-gray-600">
                             <div className="items-center justify-between mb-3 sm:flex">
@@ -411,7 +427,7 @@ function App() {
                         </li>
                         <li className="mb-5 ms-6">
                           <span className="absolute -start-5 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                            <img className="w-11 h-11 pr-1 object-contain rounded-full" src="./src/assets/hitatekIcon.png" alt="Rounded avatar" />
+                            <img className="w-11 h-11 pr-1 object-contain rounded-full" src={hitatekIcon} alt="" />
                           </span>
                           <div className="p-4 bg-white border  border-gray-200 rounded-lg shadow-sm dark:bg-gray-700 dark:border-gray-600">
                             <div className="items-center justify-between mb-3 sm:flex">
@@ -490,7 +506,7 @@ function App() {
                         </div>
                         <div className='flex items-center justify-start gap-x-1'>
                           <span className="">
-                            <img className="w-7 h-7 rounded-full" src="https://www.worldometers.info/img/flags/sa-flag.gif" alt="Rounded avatar" />
+                            <img className="w-7 h-7 rounded-full" src="https://www.worldometers.info/img/flags/sa-flag.gif" alt="" />
                           </span>
                           <div className='justify-items-end'>
                             Arabic
@@ -498,7 +514,7 @@ function App() {
                         </div>
                         <div className='flex items-center justify-start gap-x-1'>
                           <span className="">
-                            <img className="w-7 h-7 rounded-full" src="https://www.worldometers.info/img/flags/tu-flag.gif" alt="Rounded avatar" />
+                            <img className="w-7 h-7 rounded-full" src="https://www.worldometers.info/img/flags/tu-flag.gif" alt="" />
                           </span>
                           <div className='justify-items-end'>
                             Turkish
@@ -506,7 +522,7 @@ function App() {
                         </div>
                         <div className='flex items-center justify-start gap-x-1'>
                           <span className="">
-                            <img className="w-7 h-7 rounded-full" src="https://www.worldometers.info/img/flags/uk-flag.gif" alt="Rounded avatar" />
+                            <img className="w-7 h-7 rounded-full" src="https://www.worldometers.info/img/flags/uk-flag.gif" alt="" />
                           </span>
                           <div className='justify-items-end'>
                             English

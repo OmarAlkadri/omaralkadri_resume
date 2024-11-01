@@ -1,0 +1,30 @@
+name: Update Visitor Counter
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+jobs:
+  update-counter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Increment Visitor Counter
+        id: increment
+        run: |
+          file="visitors.json"
+          count=$(jq '.count' $file)
+          count=$((count + 1))
+          jq ".count = $count" $file > tmp.json && mv tmp.json $file
+          echo "new_count=$count" >> $GITHUB_ENV
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add visitors.json
+          git commit -m "Increment visitor counter to ${{ env.new_count }}"
+          git push
