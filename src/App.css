@@ -12,3 +12,33 @@
   background-image: url("/src/assets/2.jpg");
 
 }
+
+
+/* للهواتف */
+@media (max-width: 639px) {
+  .languages {
+    @apply flex-row gap-x-8;
+  }
+
+  .education {
+    @apply max-w-[600px];
+  }
+
+  .languages {
+    @apply max-w-[600px] flex-col;
+  }
+
+  .language {
+    @apply max-w-[600px] flex-row;
+  }
+}
+
+/* للتابلت */
+@media (min-width: 640px) and (max-width: 1023px) {
+  /* الأنماط للتابلت */
+}
+
+/* لأجهزة الكمبيوتر المكتبية */
+@media (min-width: 1024px) {
+  /* الأنماط لأجهزة الكمبيوتر المكتبية */
+}
