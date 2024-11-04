@@ -63,7 +63,7 @@ export const Skills = () => {
     const progressRefs = useRef<(HTMLDivElement | null)[]>([]);
 
     useEffect(() => {
-        const observers: IntersectionObserver[] = []; // لحفظ كل ملاحظة على حدة
+        const observers: IntersectionObserver[] = [];
 
         skillsData.forEach((_, index) => {
             const observer = new IntersectionObserver(
@@ -85,17 +85,11 @@ export const Skills = () => {
                 },
                 { threshold: 0.5 }
             );
-
-            // الربط بمراجع العناصر
             if (progressRefs.current[index]) {
                 observer.observe(progressRefs.current[index] as HTMLDivElement);
             }
-
-            // إضافة الملاحظ للمتابعة
             observers.push(observer);
         });
-
-        // تنظيف الملاحظات عند الخروج
         return () => {
             observers.forEach((observer, index) => {
                 if (progressRefs.current[index]) {
@@ -119,32 +113,34 @@ export const Skills = () => {
                             group.skills.push(skill);
                             acc[skill.skillGroupName] = group;
                             return acc;
-                        }, {})).map((group: any) => (
-                            <div key={group.groupName} className="flex flex-col w-full max-w-52 pb-2">
-                                <div className="flex-col justify-start lg:items-start items-start flex gap-1">
-                                    <h1 className="font-manrope text-xs leading-10">{group.groupName}</h1>
-                                    <hr className="w-12 h-1 relative bottom-2 bg-black border-0 rounded dark:bg-gray-700" />
-                                </div>
-                                {group.skills.map((skill: any, index: any) => (
-                                    <div key={skill.skillName} className="flex flex-col">
-                                        <div className='text-sm'>{skill.skillName}</div>
-                                        <div ref={(el) => (progressRefs.current[index] = el)} className="flex flex-row items-center gap-x-3">
-                                            <div className="flex w-full h-2 bg-gray-200 rounded-full overflow-hidden dark:bg-neutral-700" role="progressbar"
-                                                aria-valuenow={values[index]}
-                                                aria-valuemin={0}
-                                                aria-valuemax={100}>
-                                                <div className="flex flex-col justify-center rounded-full bg-blue-600 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-blue-500"
-                                                    style={{ width: `${values[index]}%` }}>
+                        }, {})).map((group: any) => {
+                            return (
+                                <div key={group.groupName} className="flex flex-col w-full max-w-52 pb-2">
+                                    <div className="flex-col justify-start lg:items-start items-start flex gap-1">
+                                        <h1 className="font-manrope text-xs leading-10">{group.groupName}</h1>
+                                        <hr className="w-12 h-1 relative bottom-2 bg-black border-0 rounded dark:bg-gray-700" />
+                                    </div>
+                                    {group.skills.map((skill: any, index: any) => (
+                                        <div key={skill.skillName} className="flex flex-col">
+                                            <div className='text-sm'>{skill.skillName}</div>
+                                            <div ref={(el) => (progressRefs.current[index] = el)} className="flex flex-row items-center gap-x-3">
+                                                <div className="flex w-full h-2 bg-gray-200 rounded-full overflow-hidden dark:bg-neutral-700" role="progressbar"
+                                                    aria-valuenow={values[index]}
+                                                    aria-valuemin={0}
+                                                    aria-valuemax={100}>
+                                                    <div className="flex flex-col justify-center rounded-full bg-blue-600 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-blue-500"
+                                                        style={{ width: `${values[index]}%` }}>
+                                                    </div>
+                                                </div>
+                                                <div className="w-10 text-end">
+                                                    <span className="text-sm text-gray-800 dark:text-white">{values[index]}%</span>
                                                 </div>
                                             </div>
-                                            <div className="w-10 text-end">
-                                                <span className="text-sm text-gray-800 dark:text-white">{values[index]}%</span>
-                                            </div>
                                         </div>
-                                    </div>
-                                ))}
-                            </div>
-                        ))}
+                                    ))}
+                                </div>
+                            )
+                        })}
                     </div>
                 </div>
             </div>
