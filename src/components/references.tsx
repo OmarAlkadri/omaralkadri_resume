@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 export const References = () => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
 
     const references = [
         {

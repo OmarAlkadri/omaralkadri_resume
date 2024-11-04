@@ -5,7 +5,7 @@ import freelancer from '../assets/freelancer.png';
 import { useTranslation } from 'react-i18next';
 
 export const CurriculumVitae = () => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
 
     const EducationData = {
         time: t("education.time.2018_2022"),
@@ -152,7 +152,7 @@ export const CurriculumVitae = () => {
                             </div>
                             <ol className="relative top-4 border-s border-gray-200 dark:border-gray-700">
                                 {
-                                    ExperiencesData.map((experience, index) => {
+                                    ExperiencesData.map((experience) => {
                                         return (
                                             <li className="mb-5 ms-6">
                                                 <span className="absolute -start-5 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
@@ -170,7 +170,7 @@ export const CurriculumVitae = () => {
                                                     <div className="p-3 text-xs italic font-normal text-gray-500 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-600 dark:border-gray-500 dark:text-gray-300">
                                                         <ul className="flex flex-col pl-3 gap-y-1 list-disc">
                                                             {
-                                                                experience.responsibilities.map((responsibilitie, index) => {
+                                                                experience.responsibilities.map((responsibilitie) => {
                                                                     return (
                                                                         <li>
                                                                             {responsibilitie}

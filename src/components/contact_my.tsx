@@ -4,7 +4,7 @@ import emailjs from 'emailjs-com';
 import { useTranslation } from 'react-i18next';
 
 export const ContactMy = () => {
-    const [t, i18n] = useTranslation();
+    const [t] = useTranslation();
 
     const {
         register,

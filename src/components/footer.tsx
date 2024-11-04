@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import myImage from '../assets/my.jpg';
 
 export const Footer = () => {
-    const [t, il8n] = useTranslation()
+    const [t] = useTranslation()
 
     const profile = {
         name: 'Omar Alkadri',

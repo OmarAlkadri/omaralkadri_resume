@@ -1,16 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './App.css'
 import ReactTypingEffect from 'react-typing-effect';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useForm } from 'react-hook-form';
 import { MyStory } from './components/my_story';
 import { Skills } from './components/skills';
 import { CurriculumVitae } from './components/curriculum_vitae';
 import { References } from './components/references';
 import { ContactMy } from './components/contact_my';
 import { Footer } from './components/footer';
-import { useTranslation } from 'react-i18next';
 import { NavBar } from './components/navBar';
 //import visitors from '../visitors.json';
 //import { Octokit, App } from "octokit";

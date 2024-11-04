@@ -56,10 +56,12 @@ export const Skills = () => {
         { skillName: 'Storybook', skillValue: 80, skillGroupName: 'Others' },
     ];
 
-
     const [values, setValues] = useState(skillsData.map(() => 0));
     const progressRefs = useRef<(HTMLDivElement | null)[]>([]);
+
     useEffect(() => {
+        const observers: IntersectionObserver[] = []; // لحفظ كل ملاحظة على حدة
+
         skillsData.forEach((_, index) => {
             const observer = new IntersectionObserver(
                 (entries) => {
@@ -75,66 +77,74 @@ export const Skills = () => {
                                 }
                                 return newValues;
                             });
-                        }, 25); // التحديث كل 200 مللي ثانية
+                        }, 75);
                     }
                 },
                 { threshold: 0.5 }
             );
 
+            // الربط بمراجع العناصر
             if (progressRefs.current[index]) {
                 observer.observe(progressRefs.current[index] as HTMLDivElement);
             }
 
-            return () => {
+            // إضافة الملاحظ للمتابعة
+            observers.push(observer);
+        });
+
+        // تنظيف الملاحظات عند الخروج
+        return () => {
+            observers.forEach((observer, index) => {
                 if (progressRefs.current[index]) {
                     observer.unobserve(progressRefs.current[index] as HTMLDivElement);
                 }
-            };
-        });
-    }, []);
+            });
+        };
+    }, [skillsData]); // إضافة skillsData لتحديث الملاحظات عند تغير البيانات
 
-    return (<div className="w-full px-4 md:px-5 lg:px-5 mx-auto">
-        <div className="w-full flex-col justify-center lg:items-start items-center gap-10 inline-flex">
-            <div className="w-full flex-col justify-center items-start gap-8 flex">
-                <div className="flex-col justify-start lg:items-start items-center gap-4 flex">
-                    <h1 className="font-manrope text-gray-400 text-4xl font-bold leading-10">Skills</h1>
-                    <hr className="w-28 h-1 bg-black border-0 rounded dark:bg-gray-700" />
-                </div>
-                <div className="flex w-full overflow-auto flex-col justify-start items-start flex-wrap h-full max-h-[800px] gap-y-2 gap-x-3">
-                    {Object.values(skillsData.reduce((acc: any, skill: any) => {
-                        // Grouping skills by skillGroupName
-                        const group = acc[skill.skillGroupName] || { groupName: skill.skillGroupName, skills: [] };
-                        group.skills.push(skill);
-                        acc[skill.skillGroupName] = group;
-                        return acc;
-                    }, {})).map((group: any) => (
-                        <div key={group.groupName} className="flex flex-col w-full max-w-52 pb-2">
-                            <div className="flex-col justify-start lg:items-start items-start flex gap-1">
-                                <h1 className="font-manrope text-xs leading-10">{group.groupName}</h1>
-                                <hr className="w-12 h-1 relative bottom-2 bg-black border-0 rounded dark:bg-gray-700" />
-                            </div>
-                            {group.skills.map((skill: any, index: any) => (
-                                <div key={skill.skillName} className="flex flex-col">
-                                    <div className='text-sm'>{skill.skillName}</div>
-                                    <div ref={(el) => (progressRefs.current[index] = el)} className="flex flex-row items-center gap-x-3">
-                                        <div className="flex w-full h-2 bg-gray-200 rounded-full overflow-hidden dark:bg-neutral-700" role="progressbar"
-                                            aria-valuenow={skill.skillValue}
-                                            aria-valuemin={0}
-                                            aria-valuemax={100}>
-                                            <div className="flex flex-col justify-center rounded-full bg-blue-600 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-blue-500"
-                                                style={{ width: `${skill.skillValue}%` }}>
+    return (
+        <div className="w-full px-4 md:px-5 lg:px-5 mx-auto">
+            <div className="w-full flex-col justify-center lg:items-start items-center gap-10 inline-flex">
+                <div className="w-full flex-col justify-center items-start gap-8 flex">
+                    <div className="flex-col justify-start lg:items-start items-center gap-4 flex">
+                        <h1 className="font-manrope text-gray-400 text-4xl font-bold leading-10">Skills</h1>
+                        <hr className="w-28 h-1 bg-black border-0 rounded dark:bg-gray-700" />
+                    </div>
+                    <div className="flex w-full overflow-auto flex-col justify-start items-start flex-wrap h-full max-h-[800px] gap-y-2 gap-x-3">
+                        {Object.values(skillsData.reduce((acc: any, skill: any) => {
+                            const group = acc[skill.skillGroupName] || { groupName: skill.skillGroupName, skills: [] };
+                            group.skills.push(skill);
+                            acc[skill.skillGroupName] = group;
+                            return acc;
+                        }, {})).map((group: any) => (
+                            <div key={group.groupName} className="flex flex-col w-full max-w-52 pb-2">
+                                <div className="flex-col justify-start lg:items-start items-start flex gap-1">
+                                    <h1 className="font-manrope text-xs leading-10">{group.groupName}</h1>
+                                    <hr className="w-12 h-1 relative bottom-2 bg-black border-0 rounded dark:bg-gray-700" />
+                                </div>
+                                {group.skills.map((skill: any, index: any) => (
+                                    <div key={skill.skillName} className="flex flex-col">
+                                        <div className='text-sm'>{skill.skillName}</div>
+                                        <div ref={(el) => (progressRefs.current[index] = el)} className="flex flex-row items-center gap-x-3">
+                                            <div className="flex w-full h-2 bg-gray-200 rounded-full overflow-hidden dark:bg-neutral-700" role="progressbar"
+                                                aria-valuenow={values[index]}
+                                                aria-valuemin={0}
+                                                aria-valuemax={100}>
+                                                <div className="flex flex-col justify-center rounded-full bg-blue-600 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-blue-500"
+                                                    style={{ width: `${values[index]}%` }}>
+                                                </div>
+                                            </div>
+                                            <div className="w-10 text-end">
+                                                <span className="text-sm text-gray-800 dark:text-white">{values[index]}%</span>
                                             </div>
                                         </div>
-                                        <div className="w-10 text-end">
-                                            <span className="text-sm text-gray-800 dark:text-white">{skill.skillValue}%</span>
-                                        </div>
                                     </div>
-                                </div>
-                            ))}
-                        </div>
-                    ))}
+                                ))}
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>)
+    )
 }
