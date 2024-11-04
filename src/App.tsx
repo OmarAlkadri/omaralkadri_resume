@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react'
 import './App.css'
-import ReactTypingEffect from 'react-typing-effect';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { MyStory } from './components/my_story';
@@ -10,118 +8,40 @@ import { References } from './components/references';
 import { ContactMy } from './components/contact_my';
 import { Footer } from './components/footer';
 import { NavBar } from './components/navBar';
+import { useTranslation } from 'react-i18next';
+import { Header } from './components/header';
+import { useEffect, useState } from 'react';
 //import visitors from '../visitors.json';
 //import { Octokit, App } from "octokit";
 
-type ElementData = {
-  content: any;
-  startAnimationClasses: string[];
-};
 
 function App() {
-
-
-
-  const allElements: ElementData[] = [
-    { content: "عنصر 1", startAnimationClasses: ["animate-slideInLeft", "animate-slideOutRight"] },
-    { content: "عنصر 2", startAnimationClasses: ["animate-slideInLeft", "animate-slideOutRight"] },
-    { content: "عنصر 3", startAnimationClasses: ["animate-slideInLeft", "animate-slideOutRight"] },
-    {
-      content: <>
-        <ReactTypingEffect
-          text={"Hello. World!!!"}
-          displayTextRenderer={(text: any) => {
-            return (
-              <h1>
-                {text.split('').map((char: any, i: any) => {
-                  const key = `${i}`;
-                  return (
-                    <span
-                      key={key}
-                      style={i % 2 === 0 ? { color: 'magenta' } : {}}
-                    >{char}</span>
-                  );
-                })}
-              </h1>
-            );
-          }}
-        /></>, startAnimationClasses: ["animate-tada", ""]
-    }
-  ];
-  const [elements] = useState<ElementData[]>(allElements);
-  const [activeIndex, setActiveIndex] = React.useState(0);
-
-
+  const { i18n } = useTranslation();
+  const [loder, setLoder] = useState(false);
 
   useEffect(() => {
-    const fetchVisitorCount = async () => {
-      try {
-        /*   const octokit = new Octokit({
-             auth: 'SHA256:ui4BXqvAZdYoKqpfINtMjKnu9+KSkdxmF267CHtb7hQ'
-           })
-   
-           const response = await octokit.request('GET /repos/OmarAlkadri/omaralkadri_resume/contents/visitors.json', {
-             owner: 'OWNER',
-             repo: 'REPO',
-             path: 'PATH',
-             headers: {
-               'X-GitHub-Api-Version': '2022-11-28'
-             }
-           })
-   
-           const data = await response.json();
-           setVisitorCount(data.count ?? 0);*/
-      } catch (error) {
-        console.error('Error fetching visitor count:', error);
-      }
-    };
+    const savedLanguage = localStorage.getItem('language') || 'en';
+    const savedMode = localStorage.getItem('mode') === 'true';
 
-    fetchVisitorCount();
-  }, []);
+    document.body.classList.toggle("dark", savedMode);
+    i18n.changeLanguage(savedLanguage);
+    setTimeout(() => {
+      setLoder(true)
+    }, 100)
+  }, [])
+  useEffect(() => {
+    document.documentElement.setAttribute("dir", i18n.language == 'ar' ? "rtl" : "ltr");
 
-
-
-
+  }, [i18n.language])
+  if (!loder)
+    return ''
   return (
-    <html className='bg-white dark:bg-black'>
+    <div className='bg-white dark:bg-black'>
       <nav className="block w-full px-4 py-2 mx-auto bg-white bg-opacity-60 sticky top-0 shadow lg:px-8 lg:py-3 backdrop-blur-lg backdrop-saturate-150 z-[9999]">
         <NavBar />
       </nav>
       <header>
-        <div className='flex flex-col items-center justify-center h-screen bg-fixed bg-center bg-cover custom-img'>
-          {elements.map((element, index) => {
-            const [animatingIndex, setAnimatingIndex] = React.useState(0);
-            const handleAnimationEnd = (e: React.AnimationEvent<HTMLDivElement>, index: number) => {
-              if (index == 3)
-                console.log()
-              setAnimatingIndex(animatingIndex + 1)
-              if (elements.length - 1 > index)
-                e.currentTarget.classList.replace(element.startAnimationClasses[animatingIndex], element.startAnimationClasses[animatingIndex + 1]);
-              if (element.startAnimationClasses.length == animatingIndex + 1)
-                setActiveIndex(activeIndex + 1)
-            };
-            const handleAnimationStart = (e: React.AnimationEvent<HTMLDivElement>) => {
-              if (animatingIndex == 0)
-                e.currentTarget.classList.replace("invisible", "visible");
-            };
-            return (
-              index == activeIndex &&
-              <div
-                key={index}
-                className={`invisible p-5 text-2xl text-white rounded-xl mb-4 transition-opacity duration-1000 
-                ${element.startAnimationClasses[0]}`}
-                onAnimationStart={(e) => handleAnimationStart(e)}
-                onAnimationEnd={(e) => handleAnimationEnd(e, index)}
-              >
-                {element.content}
-              </div>
-
-            )
-          })
-          }
-
-
-        </div>
+        <Header />
       </header>
       <main className='w-full flex items-center justify-center relative xl:mr-0 lg:mr-5 mr-0  py-24'>
         <div className='max-w-7xl flex flex-col  gap-y-20'>
@@ -141,16 +61,13 @@ function App() {
           <section id='contact_my' className="contact_my">
             <ContactMy />
           </section>
-
         </div>
-
       </main>
       <footer className="bg-gray-200 dark:bg-gray-900">
         <Footer />
       </footer>
       <ToastContainer />
-
-    </html>
+    </div>
   )
 }
 

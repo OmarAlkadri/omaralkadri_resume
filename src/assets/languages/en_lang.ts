@@ -1,5 +1,4 @@
 export const translationEN = {
-    about: "About",
     myStory: "My Story",
     skills: "Skills",
     curriculumVitae: "Curriculum Vitae",
@@ -34,11 +33,45 @@ export const translationEN = {
     happyClients: "98% Happy Clients",
     clientsDescription: "Our focus on client satisfaction.",
     readMore: "Read More",
+    DownloadMyResume: "Download My Resume",
     seniorSoftwareDeveloperAtMelerToledo: "Senior Software Developer at Meler-Toledo",
     seniorSoftwareDeveloperAndCoFounderAtHitatek: "Senior Software Developer & Co-Founder at Hitatek",
     productManager: "Product Manager",
     phone: "Phone",
     email: "Email",
+    "errors": {
+        "invalidEmail": "Invalid email",
+        "nameRequired": "Name is required",
+        "emailRequired": "Email is required",
+        "phoneRequired": "Phone number is required",
+        "messageRequired": "Message is required",
+        "sendEmail": "An error occurred while sending the email"
+    },
+    "contactImage": {
+        "alt": "Contact image"
+    },
+    "contactInfo": {
+        "phone": "+90 539 671 13 55",
+        "email": "omar.omar.alkadri111@gmail.com",
+        "address": "Aksu Street, Building No. 6, Apartment 89, Kecioren, Ankara, Turkey",
+        "addressLabel": "Contact address"
+    },
+    "sendMessage": "Send a Message",
+    "form": {
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone Number",
+        "message": "Your Message",
+        "send": "Send"
+    },
+    "cv_title": "Curriculum Vitae",
+    "educationName": "Education",
+    "certifications_honors": "Certifications & Honors",
+    "sosyal_uyum_hackathon": "Social Cohesion Hackathon",
+    "habitat_association": "Habitat Association",
+    "interests_hobbies": "Interests & Hobbies",
+    "work_experiences": "Work Experiences",
+    "languages": "Languages",
     "education": {
         "time": {
             "2018_2022": "2018-2022"
@@ -61,89 +94,162 @@ export const translationEN = {
     "interests": {
         "description": "I'm interested in the latest technology & self-development. I love swimming & sports. I love listening; I'm a fairly good listener. I love learning & I love the excitement of learning, especially in the field of programming. I love camping trips & cruises."
     },
+    "greeting": "Hi Everyone, What's Up?",
+    "welcomeMessage": "Welcome To Ny Site",
+    "introMessage": "I am OMER ALKADRI",
+    "typing1": "Hello, what's up?",
+    "typing2": "This is page of Engineer Omar Alkadri",
+    "typing3": "Welcome To My Site",
+    "ContactMe": "Contact Me",
+    "Omer Alkadri": "Omer Alkadri",
+    "NumberOfVisitorsToMyProfile:": "Number of visitors to my profile:",
+    "Light": "Light",
+    "Dark": "Dark",
+    "Arabic": "Arabic",
+    "English": "English",
+    "Turkish": "Turkish",
+    "footer": {
+        "profileName": "Omar Alkadri",
+        "copyright": "© {{year}} {{name}}™. All Rights Reserved.",
+        "aboutMe": "About Me",
+        "followMe": "Follow Me",
+        "myStory": "My Story",
+        "skills": "Skills",
+        "curriculumVitae": "Curriculum Vitae",
+        "references": "References",
+        "contactMe": "Contact Me",
+        "logoAlt": "Logo",
+        "account": "account",
+        "social": {
+            "facebook": "Facebook",
+            "github": "GitHub",
+            "dribbble": "Dribbble",
+            "linkedin": "LinkedIn"
+        },
+        "follow": {
+            "github": "Github",
+            "linkedin": "Linkedin"
+        }
+    },
     "experience": {
         "trt_global": {
-            "time": "February 2024 - November 2024",
-            "position": "Full Stack Developer",
-            "level": "Senior Level",
+            "time": "Şubat 2024 - Kasım 2024",
+            "position": "Full Stack Geliştirici",
+            "level": "Kıdemli Seviye",
             "company": "TRT Global",
             "responsibility": {
-                "cms_implementation": "Implemented a Comprehensive CMS to manage digital content efficiently, improving team collaboration and productivity.",
-                "ai_integration": "AI Integration to enhance the user experience with personalized content recommendations.",
-                "news_asset_collaboration": "Collaboration with NewsHQ & AssetHQ to streamline workflows and improve information accessibility.",
-                "microservices_architecture": "Microservices Architecture to enable scalable and maintainable application development.",
-                "technologies_used": "Technologies Used: [Node.js, React, MongoDB, Postgresql, Docker, AWS, Typesense, Next.js, PayloadCMS]"
+                "cms_implementation": "Dijital içeriği verimli bir şekilde yönetmek için kapsamlı bir CMS uygulaması, ekip işbirliğini ve verimliliği artırır.",
+                "ai_integration": "Kullanıcı deneyimini geliştirmek için kişiselleştirilmiş içerik önerileri ile AI entegrasyonu.",
+                "news_asset_collaboration": "HaberHQ ve VarlıkHQ ile işbirliği yaparak iş akışlarını düzene sokmak ve bilgiye erişimi artırmak.",
+                "microservices_architecture": "Büyüyebilir ve sürdürülebilir uygulama geliştirme için mikro hizmet mimarisi.",
+                "technologies_used": "Kullanılan Teknolojiler: [Node.js, React, MongoDB, PostgreSQL, Docker, AWS, Typesense, Next.js, PayloadCMS]"
             }
         },
         "hitatek": {
-            "time": "February 2022 - November 2023",
-            "position": "Software Engineer",
-            "level": "Mid Level",
+            "time": "Şubat 2022 - Kasım 2023",
+            "position": "Yazılım Mühendisi",
+            "level": "Orta Seviye",
             "company": "Hitatek",
             "responsibility": {
-                "telegram_bot": "Developed a Telegram bot using Node.js to track project progress, manage invoices, & handle permissions, enhancing project management efficiency by 25%.",
-                "education_management_system": "Developed software for Baykar, starting with the Eğitim Yönetim Sistemi (Education Management System), which handles semesters, curriculum, trainers, trainees, exam schedules, & more, including notifications.",
-                "field_management_system": "Developed the Saha Yönetim Sistemi (Field Management System) for Baykar, an ERP system for managing company resources, branches, field resources, employee tracking, priority organization, & fair employee evaluation.",
-                "election_tracking": "Built election tracking pages for TRT World, featuring real-time data from Anadolu Agency, improving data accessibility during elections.",
-                "technologies_used": "Technologies Used: [Node.js, React, MongoDB, Ubuntu Server, NestJS, C#, AWS, Docker, Angular]"
+                "telegram_bot": "Proje ilerlemesini takip etmek, faturaları yönetmek ve izinleri ele almak için Node.js kullanarak bir Telegram botu geliştirdim, proje yönetimi verimliliğini %25 artırdım.",
+                "education_management_system": "Baykar için, eğitim dönemlerini, müfredatı, eğitmenleri, öğrencileri, sınav takvimlerini ve daha fazlasını yöneten Eğitim Yönetim Sistemi yazılımı geliştirdim.",
+                "field_management_system": "Baykar için, şirket kaynaklarını, şubeleri, saha kaynaklarını yönetmek ve çalışan takibi yapmak için bir ERP sistemi olan Saha Yönetim Sistemi'ni geliştirdim.",
+                "election_tracking": "TRT World için Anadolu Ajansı'ndan gerçek zamanlı veriler içeren seçim izleme sayfaları oluşturdum, seçimler sırasında veri erişimini artırdım.",
+                "technologies_used": "Kullanılan Teknolojiler: [Node.js, React, MongoDB, Ubuntu Sunucu, NestJS, C#, AWS, Docker, Angular]"
             }
         },
         "freelancer": {
-            "time": "January 2020 - January 2022",
-            "position": "Freelancer",
-            "level": "Independent",
-            "company": "Self-Employed",
+            "time": "Ocak 2020 - Ocak 2022",
+            "position": "Serbest Çalışan",
+            "level": "Bağımsız",
+            "company": "Kendi İşim",
             "responsibility": {
-                "web_development_projects": "Worked on various web development projects using React and Node.js, delivering customized solutions for clients.",
-                "api_design": "Designed and implemented RESTful APIs for seamless integration with front-end applications.",
-                "client_collaboration": "Collaborated with clients to gather requirements and deliver products that meet their expectations.",
-                "full_project_lifecycle": "Managed the full project lifecycle from conception to deployment, ensuring high-quality code and documentation.",
-                "technologies_used": "Technologies Used: [HTML, CSS, JavaScript, React, Node.js, Express, MongoDB]"
+                "web_development_projects": "Müşteriler için özel çözümler sunarak React ve Node.js kullanarak çeşitli web geliştirme projelerinde çalıştım.",
+                "api_design": "Ön uç uygulamalarla sorunsuz entegrasyon için RESTful API'ler tasarlayıp uyguladım.",
+                "client_collaboration": "İhtiyaçları toplamak ve beklentilerini karşılayan ürünler sunmak için müşterilerle işbirliği yaptım.",
+                "full_project_lifecycle": "Projeyi kavramadan dağıtıma kadar yöneterek yüksek kaliteli kod ve belgeler sağladım.",
+                "technologies_used": "Kullanılan Teknolojiler: [HTML, CSS, JavaScript, React, Node.js, Express, MongoDB]"
             }
         },
-        "cv_title": "Curriculum Vitae",
-        "education": "Education",
-        "certifications_honors": "Certifications and Honors",
-        "interests_hobbies": "Interests and Hobbies",
-        "work_experiences": "Work Experiences",
-        "languages": "Languages",
-        "arabic": "Arabic",
-        "turkish": "Turkish",
-        "english": "English",
-        "education_institution": "University Name",
-        "education_department": "Department",
-        "education_program": "Bachelor’s Degree",
+        "cv_title": "Özgeçmiş",
+        "education": "Eğitim",
+        "certifications_honors": "Sertifikalar ve Onurlar",
+        "interests_hobbies": "İlgi Alanları ve Hobiler",
+        "work_experiences": "İş Deneyimleri",
+        "languages": "Diller",
+        "education_institution": "Üniversite Adı",
+        "education_department": "Bölüm",
+        "education_program": "Lisans Derecesi",
         "sosyal_uyum_hackathon": "Sosyal Uyum Hackathon",
-        "habitat_association": "Habitat Association",
+        "habitat_association": "Habitat Derneği",
         "toast": {
-            "success": "Message sent successfully!"
-        },
+            "success": "Mesaj başarıyla gönderildi!"
+        }
     },
-
-    "errors": {
-        "invalidEmail": "Invalid email",
-        "nameRequired": "Name is required",
-        "emailRequired": "Email is required",
-        "phoneRequired": "Phone number is required",
-        "messageRequired": "Message is required",
-        "sendEmail": "An error occurred while sending the email"
+    "about": {
+        "title": "About Me",
+        "subtitle": "My Story",
+        "description": "Innovative software developer committed to advancing company goals through technology and teamwork."
     },
-    "contactImage": {
-        "alt": "Contact image"
-    },
-    "contactInfo": {
-        "phone": "Phone Number",
-        "email": "Email",
-        "address": "Address",
-        "addressLabel": "Contact address"
-    },
-    "sendMessage": "Send a Message",
-    "form": {
-        "name": "Name",
-        "email": "Email",
-        "phone": "Phone Number",
-        "message": "Your Message",
-        "send": "Send"
-    }
+    "stats": [
+        { "title": "5+ Years", "description": "Creating innovative solutions through technology." },
+        { "title": "8+ Projects", "description": "Excellence through success." },
+        { "title": "3+ Awards", "description": "Dedication to innovation." },
+        { "title": "98% Happy Clients", "description": "Our focus on client satisfaction." }
+    ],
+    "button": "Download My Resume",
+    "Skills": "Skills",
+    "Programming Languages": "Programming Languages",
+    "JavaScript": "JavaScript",
+    "TypeScript": "TypeScript",
+    "C++ / C": "C++ / C",
+    "C# / .NET Core / EF Core": "C# / .NET Core / EF Core",
+    "Java / Spring Boot": "Java / Spring Boot",
+    "Python": "Python",
+    "Kotlin": "Kotlin",
+    "PHP / Laravel": "PHP / Laravel",
+    "Libraries & Frameworks": "Libraries & Frameworks",
+    "React.js / Next.js": "React.js / Next.js",
+    "NestJS": "NestJS",
+    "Express.js": "Express.js",
+    "Angular": "Angular",
+    "Vue.js": "Vue.js",
+    "Blazor": "Blazor",
+    "Databases": "Databases",
+    "SQL (MSSQL, PostgreSQL, SQLite)": "SQL (MSSQL, PostgreSQL, SQLite)",
+    "MongoDB / MongoDB Atlas": "MongoDB / MongoDB Atlas",
+    "Redis": "Redis",
+    "Server Tools & Environment": "Server Tools & Environment",
+    "Ubuntu Server": "Ubuntu Server",
+    "Docker": "Docker",
+    "AWS / AWS Elasticsearch": "AWS / AWS Elasticsearch",
+    "Cloudflare": "Cloudflare",
+    "Develop Tools & Project Management": "Develop Tools & Project Management",
+    "Git / GitHub / GitLab": "Git / GitHub / GitLab",
+    "Atlassian (Trello, Jira)": "Atlassian (Trello, Jira)",
+    "Office 365": "Office 365",
+    "draw.io": "draw.io",
+    "Figma": "Figma",
+    "Photoshop": "Photoshop",
+    "Computer Science Concepts": "Computer Science Concepts",
+    "Data Structures": "Data Structures",
+    "Analysis of Algorithms": "Analysis of Algorithms",
+    "Design Patterns": "Design Patterns",
+    "Software Architecture": "Software Architecture",
+    "Performance Optimization": "Performance Optimization",
+    "Troubleshooting": "Troubleshooting",
+    "Personal Skills": "Personal Skills",
+    "Love of Learning": "Love of Learning",
+    "Dedicated Team Player": "Dedicated Team Player",
+    "Analytical Thinking Skills": "Analytical Thinking Skills",
+    "Attention to Detail": "Attention to Detail",
+    "Good Listener": "Good Listener",
+    "Others": "Others",
+    "IOT": "IOT",
+    "Raspberry Pi": "Raspberry Pi",
+    "Arduino": "Arduino",
+    "Data Communications": "Data Communications",
+    "Electric Circuit": "Electric Circuit",
+    "PayloadCMS": "PayloadCMS",
+    "Storybook": "Storybook",
 }
-

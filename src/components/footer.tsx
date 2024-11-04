@@ -2,16 +2,19 @@ import { useTranslation } from 'react-i18next';
 import myImage from '../assets/my.jpg';
 
 export const Footer = () => {
-    const [t] = useTranslation()
+    const [t] = useTranslation();
 
     const profile = {
-        name: 'Omar Alkadri',
-        copyright: '© 2023 Omar Alkadri™. All Rights Reserved.',
+        name: t('footer.profileName', { defaultValue: 'Omar Alkadri' }),  // Default to English name if translation is missing
+        copyright: t('footer.copyright', {
+            year: '2023',
+            name: 'Omar Alkadri'
+        }),
         socialLinks: [
-            { href: "https://www.facebook.com/11omar.omar", label: 'Facebook', iconClass: 'icon-[logos--facebook]' },
-            { href: "https://github.com/OmarAlkadri", label: 'GitHub', iconClass: 'icon-[fa--github] mr-1' },
-            { href: "#", label: 'Dribbble', svgIcon: true },
-            { href: "https://www.linkedin.com/in/omar-alkadri/", label: 'LinkedIn', iconClass: 'icon-[logos--linkedin]' },
+            { href: "https://www.facebook.com/11omar.omar", label: t('footer.social.facebook'), iconClass: 'icon-[logos--facebook]' },
+            { href: "https://github.com/OmarAlkadri", label: t('footer.social.github'), iconClass: 'icon-[fa--github] mr-1' },
+            { href: "#", label: t('footer.social.dribbble'), svgIcon: true },
+            { href: "https://www.linkedin.com/in/omar-alkadri/", label: t('footer.social.linkedin'), iconClass: 'icon-[logos--linkedin]' },
         ]
     };
 
@@ -21,11 +24,11 @@ export const Footer = () => {
             { href: "#skills", label: t('footer.skills') },
             { href: "#curriculum_vitae", label: t('footer.curriculumVitae') },
             { href: "#references", label: t('footer.references') },
-            { href: "#contact_my", label: t('footer.contactMe') }
+            { href: "#contact_me", label: t('footer.contactMe') }
         ],
         follow: [
-            { href: "https://github.com/themesberg/flowbite", label: 'Github' },
-            { href: "https://www.linkedin.com/in/omar-alkadri/", label: 'Linkedin' },
+            { href: "https://github.com/themesberg/flowbite", label: t('footer.follow.github') },
+            { href: "https://www.linkedin.com/in/omar-alkadri/", label: t('footer.follow.linkedin') },
         ]
     };
 
@@ -34,7 +37,7 @@ export const Footer = () => {
             <div className="md:flex md:justify-between">
                 <div className="mb-6 md:mb-0">
                     <a href="#" className="flex items-center">
-                        <img src={myImage} className="h-8 me-3" alt="Logo" />
+                        <img src={myImage} className="h-8 me-3" alt={t('footer.logoAlt')} />
                         <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">{profile.name}</span>
                     </a>
                 </div>
@@ -74,7 +77,7 @@ export const Footer = () => {
                             ) : (
                                 <span className={link.iconClass}></span>
                             )}
-                            <span className="sr-only">{link.label} account</span>
+                            <span className="sr-only">{link.label} {t('footer.account')}</span>
                         </a>
                     ))}
                 </div>

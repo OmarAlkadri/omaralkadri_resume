@@ -84,7 +84,7 @@ export const CurriculumVitae = () => {
                     <div className='flex lg:flex-row w-full flex-col'>
                         <div className="education px-4 md:px-5 mx-auto h-full w-full sm:max-w-[600px] lg:max-w-[400px]">
                             <div className='relative right-4'>
-                                {t('education')}
+                                {t('educationName')}
                             </div>
                             <ol className="relative top-4 border-s border-gray-200 dark:border-gray-700">
                                 <li className="mb-10 ms-6">
@@ -92,13 +92,13 @@ export const CurriculumVitae = () => {
                                         <img className="w-11 h-11 object-contain rounded-full" src={EducationData.logo} alt="" />
                                     </span>
                                     <div className="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:bg-gray-700 dark:border-gray-600">
-                                        <time className="mb-1 text-xs font-normal text-gray-400 sm:order-last sm:mb-0">{EducationData.time}</time>
+                                        <time className="mb-1 text-xs font-normal text-gray-400 sm:order-last sm:mb-0 sm:w-[100px] md:w-[70px] lg:w-[25px]">{EducationData.time}</time>
                                         <div className=" text-sm font-normal text-gray-500 dark:text-gray-300">
                                             <a href={EducationData.link} target='_blank' className="">
                                                 <span className="flex flex-col bg-gray-100 text-gray-800 font-semibold text-blue-600 dark:text-blue-500 hover:underline text-xs font-normal me-2 px-2.5 py-0.5 rounded dark:bg-gray-600 dark:text-gray-300">
-                                                    <p>{t('education_institution')}</p>
-                                                    <p>{t('education_department')}</p>
-                                                    <p>{t('education_program')}</p>
+                                                    <p>{t('education.institution.sakarya_university')}</p>
+                                                    <p>{t('education.department.computer_and_information_sciences')}</p>
+                                                    <p>{t('education.program.computer_engineering')}</p>
                                                 </span>
                                             </a>
                                         </div>
@@ -197,7 +197,7 @@ export const CurriculumVitae = () => {
                                         <img className="w-7 h-7 rounded-full" src="https://www.worldometers.info/img/flags/sa-flag.gif" alt="" />
                                     </span>
                                     <div className='justify-items-end'>
-                                        {t('arabic')}
+                                        {t('Arabic')}
                                     </div>
                                 </div>
                                 <div className='flex items-center justify-start gap-x-1'>
@@ -205,7 +205,7 @@ export const CurriculumVitae = () => {
                                         <img className="w-7 h-7 rounded-full" src="https://www.worldometers.info/img/flags/tu-flag.gif" alt="" />
                                     </span>
                                     <div>
-                                        {t('turkish')}
+                                        {t('Turkish')}
                                     </div>
                                 </div>
                                 <div className='flex items-center justify-start gap-x-1'>
@@ -213,7 +213,7 @@ export const CurriculumVitae = () => {
                                         <img className="w-7 h-7 rounded-full" src="https://www.worldometers.info/img/flags/uk-flag.gif" alt="" />
                                     </span>
                                     <div>
-                                        {t('english')}
+                                        {t('English')}
                                     </div>
                                 </div>
                             </div>
