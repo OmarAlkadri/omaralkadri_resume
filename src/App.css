@@ -1,5 +1,5 @@
 .custom-img {
-  background-image: url("/src/assets/1.jpg");
+  background-image: url("./src/assets/1.jpg");
 }
 
 .dark html {
@@ -9,13 +9,12 @@
 
 .dark .custom-img {
   @apply dark:text-gray-200;
-  background-image: url("/src/assets/2.jpg");
-
+  background-image: url("./src/assets/2.jpg");
 }
 
 
-/* للهواتف */
-@media (max-width: 639px) {
+
+@media (min-width: 1px) and (max-width: 300px) {
   .languages {
     @apply flex-row gap-x-8;
   }
@@ -29,16 +28,45 @@
   }
 
   .language {
-    @apply max-w-[600px] flex-row;
+    @apply max-w-[600px] flex-col gap-x-2;
+  }
+
+  .references {
+    @apply p-8;
   }
 }
 
-/* للتابلت */
-@media (min-width: 640px) and (max-width: 1023px) {
-  /* الأنماط للتابلت */
+@media (min-width: 301px) and (max-width: 639px) {
+  .languages {
+    @apply flex-row gap-x-8;
+  }
+
+  .education {
+    @apply max-w-[600px] mx-auto;
+  }
+
+  .languages {
+    @apply max-w-[600px] flex-col;
+  }
+
+  .language {
+    @apply max-w-[600px] flex-row gap-x-2;
+  }
+
+  .references {
+    @apply p-8
+  }
 }
 
-/* لأجهزة الكمبيوتر المكتبية */
-@media (min-width: 1024px) {
-  /* الأنماط لأجهزة الكمبيوتر المكتبية */
+@media (min-width: 640px) and (max-width: 1023px) {
+
+  .languages {
+    @apply max-w-[600px] flex-col;
+  }
+
+  .language {
+    @apply max-w-[600px] flex-row gap-x-4;
+  }
 }
+
+@media (min-width: 1024px) {}
